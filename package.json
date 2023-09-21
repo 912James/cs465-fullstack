@@ -1,8 +1,6 @@
 {
   "name": "travlr",
   "version": "0.0.0",
-  "description": "Travlr Getaways",
-  "author": "JAMES SOTO <janies.soto@snhu.edu>",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -10,7 +8,7 @@
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "4.18.2",
+    "express": "~4.16.1",
     "handlebars": "^4.7.8",
     "hbs": "4.2.0",
     "http-errors": "~1.6.3",
