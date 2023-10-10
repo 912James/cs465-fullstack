@@ -3,17 +3,39 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "name": {
+    "travlr-admin": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:class": {
+          "spec": false
+        },
+        "@schematics/angular:component": {
+          "spec": false
+        },
+        "@schematics/angular:directive": {
+          "spec": false
+        },
+        "@schematics/angular:guard": {
+          "spec": false
+        },
+        "@schematics/angular:module": {
+          "spec": false
+        },
+        "@schematics/angular:pipe": {
+          "spec": false
+        },
+        "@schematics/angular:service": {
+          "spec": false
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/name",
+            "outputPath": "dist/travlr-admin",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +72,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "name:build"
+            "browserTarget": "travlr-admin:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "name:build:production"
+              "browserTarget": "travlr-admin:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "name:build"
+            "browserTarget": "travlr-admin:build"
           }
         },
         "test": {
@@ -95,7 +117,7 @@
         }
       }
     },
-    "name-e2e": {
+    "travlr-admin-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +125,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "name:serve"
+            "devServerTarget": "travlr-admin:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "name:serve:production"
+              "devServerTarget": "travlr-admin:serve:production"
             }
           }
         },
@@ -123,5 +145,5 @@
       }
     }
   },
-  "defaultProject": "name"
+  "defaultProject": "travlr-admin"
 }
