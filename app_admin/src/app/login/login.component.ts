@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../services/authentication';
+import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../models/user';
 
 @Component({
@@ -12,10 +12,10 @@ styleUrls: ['./login.component.css']
 export class LoginComponent implements OnInit {
   public formError: string = '';
   public credentials = {
-  name: '',
-  email: '',
-  password: ''
-  };
+    name: '',
+    email: '',
+    password: ''
+};
 
   constructor(
   private router: Router,
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
   private doLogin(): void {
     this.authenticationService.login(this.credentials)
-      .then(() => this.router.navigateByUrl('#'))
+      .then(() => this.router.navigateByUrl('list-trips'))
       .catch((message) => this.formError = message);
   }
 }

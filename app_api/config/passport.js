@@ -1,10 +1,9 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
-const User = mongoose.model("users");
+const User = mongoose.model("user");
 
-passport.use(
-  new LocalStrategy(
+passport.use(new LocalStrategy(
     {
       usernameField: "email",
     },
@@ -13,16 +12,19 @@ passport.use(
         if (err) {
           return done(err);
         }
+
         if (!user) {
           return done(null, false, {
             message: "Incorrect username.",
           });
         }
+
         if (!user.validPassword(password)) {
           return done(null, false, {
             message: "Incorrect password.",
           });
         }
+        
         return done(null, user);
       });
     }

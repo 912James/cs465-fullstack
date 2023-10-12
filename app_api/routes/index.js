@@ -1,43 +1,36 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const {expressjwt: jwt} = require('express-jwt');
 
-const authController = require('../controllers/authentication');
-const tripsController = require('../controllers/trips');
 
-// this is an updated form of jwt because it version 7 or above
-const { expressjwt: jwt }  = require('express-jwt');
 const auth = jwt({
     secret: process.env.JWT_SECRET,
     userProperty: "payload",
     algorithms: ["HS256"],
-});
+  });
 
-router
-    .route('/login')
+const tripsController = require("../controllers/trips");
+const authController = require("../controllers/authentication");
+
+//route for loging in
+router.route("/login")
     .post(authController.login);
 
-router
-    .route('/register')
+//route for registering on the site
+router.route("/register")
     .post(authController.register);
-    
-router
-    .route('/trips')
+
+//route for adding trips via the SPA
+router.route("/trips")
     .get(tripsController.tripsList)
-    .post(auth, tripsController.tripsAddTrip);  // create a single trip
+    .post(auth, tripsController.tripsAddTrip);
 
-router
-    .route('/trips/:tripCode')
-    .get(tripsController.tripsFindCode)
-    .put(auth, tripsController.tripsUpdateTrip);  // update a trip
+//route for updating and deleteing trips via the SPA
+ router.route("/trips/:tripCode")
+     .get(tripsController.tripsFindByCode)
+     .delete(auth, tripsController.tripsDeleteTrip)
+     .put(auth, tripsController.tripsUpdateTrip);
 
-    router
-    .route("/trips/:tripCode")
-    .get(auth, tripsController.tripsFindCode);
-
+//router.route("/trips/:tripCode").get(tripsController.tripsFindByCode);
 
 module.exports = router;
-
-
-
-
-
