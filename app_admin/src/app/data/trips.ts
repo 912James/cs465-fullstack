@@ -22,7 +22,7 @@ export const trips =
     },
     {
         "code": "CLAR210214",
-        "name": "Claire’s Reef",
+        "name": "Claire's Reef",
         "length": "4 nights / 5 days",
         "start": "2021-06-21T08:00:00Z",
         "resort": "Coral Sands, 5 stars",

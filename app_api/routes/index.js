@@ -12,8 +12,6 @@ const auth = jwt({
     algorithms: ["HS256"],
 });
 
-
-
 router
     .route('/login')
     .post(authController.login);
@@ -25,12 +23,17 @@ router
 router
     .route('/trips')
     .get(tripsController.tripsList)
-    .post( tripsController.tripsAddTrip);  // create a single trip
+    .post(auth, tripsController.tripsAddTrip);  // create a single trip
 
 router
     .route('/trips/:tripCode')
     .get(tripsController.tripsFindCode)
-    .put( tripsController.tripsUpdateTrip);  // update a trip
+    .put(auth, tripsController.tripsUpdateTrip);  // update a trip
+
+    router
+    .route("/trips/:tripCode")
+    .get(auth, tripsController.tripsFindCode);
+
 
 module.exports = router;
 
